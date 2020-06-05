@@ -21,4 +21,10 @@ def translate(w):
     return "The word doesn't exist.Please cross-check the spelling."
 
 word = input("Enter the word: ")
-print(translate(word))
+output = translate(word)
+
+if type(output) == list:        # if output is list
+  for item in output:
+    print(item)
+else:
+  print(output)                  # if output is string
