@@ -10,7 +10,13 @@ def translate(w):
   elif w.upper() in data:
     return data[w.upper()]
   elif len(get_close_matches(w,data.keys())) > 0:
-    return "Did you mean %s instead" % get_close_matches(w,data.keys())[0]
+    yes_no = input("Did you mean %s instead? Enter Yes/No" % get_close_matches(w,data.keys())[0])
+    if yes_no.lower() in ["y","yes"]:
+      return data[get_close_matches(w,data.keys())[0]]
+    elif yes_no.lower() in ["n","no"]:
+      return "The word doesn't exist.Please cross-check the spelling."
+    else:
+      return "We did not understand your chioce. It should either be yes or no"
   else:
     return "The word doesn't exist.Please cross-check the spelling."
 
