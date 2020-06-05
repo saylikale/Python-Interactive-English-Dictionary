@@ -9,6 +9,8 @@ def translate(w):
     return data[w.title()]
   elif w.upper() in data:
     return data[w.upper()]
+  elif len(get_close_matches(w,data.keys())) > 0:
+    return "Did you mean %s instead" % get_close_matches(w,data.keys())[0]
   else:
     return "The word doesn't exist.Please cross-check the spelling."
 
