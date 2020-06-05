@@ -2,8 +2,13 @@ import json
 data = json.load(open("data.json"))
 
 def translate(w):
+  w = w.lower()
   if w in data:
     return data[w]
+  elif w.title() in data:
+    return data[w.title()]
+  elif w.upper() in data:
+    return data[w.upper()]
   else:
     return "The word doesn't exist.Please cross-check the spelling."
 
